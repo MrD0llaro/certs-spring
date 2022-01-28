@@ -9,6 +9,7 @@ public class DevBean implements MyBeanInterface {
 
     @Override
     public void init() {
+        System.out.println("<<<<< init >>>>");
     }
 
     public void afterPropertiesSet() throws Exception {

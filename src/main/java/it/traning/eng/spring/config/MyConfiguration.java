@@ -8,17 +8,18 @@ import org.springframework.context.annotation.*;
 @Configuration
 @ComponentScan("it.traning.eng.spring")
 @PropertySource("classpath:config.properties")
-@Profile("!develop")
+@Profile({"!develop"})
 public class MyConfiguration {
 
     @Bean
     public MyBeanInterface myBean(){ // attenzione il nome del bean
+
         return new MyBeanExternal();
     }
 
-    @Bean()
-    @Qualifier("pippo")
-    public MyBeanInterface myBeanTwo(){ // attenzione il nome del bean
+    @Bean
+    public MyBeanExternal myBeanTwo(){ // attenzione il nome del bean
+
         return new MyBeanExternal();
     }
 }
