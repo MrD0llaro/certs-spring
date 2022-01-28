@@ -4,14 +4,20 @@ import it.traning.eng.spring.beans.DevBean;
 import it.traning.eng.spring.beans.MyBeanExternal;
 import it.traning.eng.spring.beans.MyBeanInterface;
 import it.traning.eng.spring.beans.OtherBeanInterface;
+import org.springframework.cache.CacheManager;
+import org.springframework.cache.annotation.EnableCaching;
+import org.springframework.cache.concurrent.ConcurrentMapCacheManager;
 import org.springframework.context.annotation.*;
 
 
 
 @Configuration
-@ComponentScan({"it.traning.eng.spring","it.traning.eng.spring.config","it.traning.eng.spring.beans"})
+@ComponentScan({"it.traning.eng.spring"})
 @PropertySource("classpath:config.properties")
 @Profile({"develop"})
+@EnableAspectJAutoProxy
+@EnableCaching
+
 public class DevConfiguration {
 
     @Bean(initMethod = "init")
@@ -42,5 +48,8 @@ public class DevConfiguration {
         };
     }
 
-
+    @Bean
+    public CacheManager chacheManager(){
+        return new ConcurrentMapCacheManager("default","cache1", "cache2");
+    }
 }

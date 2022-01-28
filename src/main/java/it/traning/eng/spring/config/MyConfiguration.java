@@ -9,6 +9,7 @@ import org.springframework.context.annotation.*;
 @ComponentScan("it.traning.eng.spring")
 @PropertySource("classpath:config.properties")
 @Profile({"!develop"})
+@Deprecated()//use dev configuration
 public class MyConfiguration {
 
     @Bean
